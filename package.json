@@ -1,0 +1,14 @@
+{
+  "name": "mc-combo-bridge-adapter",
+  "version": "1.0.0",
+  "description": "Sistema de personalização de combos de fast-food com os padrões estruturais GoF Bridge e Adapter (JavaScript / Node.js)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Erick Silva",
+  "license": "MIT"
+}

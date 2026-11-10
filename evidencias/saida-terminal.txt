@@ -1,0 +1,173 @@
+🍔  SISTEMA DE COMBOS — Padrões GoF Bridge + Adapter
+    3 lanches × 6 bebidas (2 tipos × 3 tamanhos) × 3 batatas = 54 combinações
+    possíveis, sem nenhuma classe específica por combinação.
+
+════════════════════════════════════════════════════════════════════════
+ 1. MONTAGEM DE COMBOS (Bridge)
+════════════════════════════════════════════════════════════════════════
+
+┌─ Combo 1 · Combo Tradicional
+│  Lanche:  Big Mac                                      R$ 24,90
+│  Bebida:  Refrigerante 500 ml                           R$ 8,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 43,30
+│           Desconto (10%)                               -R$ 4,33
+└─          TOTAL DO COMBO                               R$ 38,97
+
+┌─ Combo 2 · Combo Tradicional
+│  Lanche:  Quarteirão                                   R$ 26,90
+│  Bebida:  Suco 300 ml                                   R$ 7,50
+│  Batata:  Batata frita pequena                          R$ 7,90
+│           Subtotal                                     R$ 42,30
+│           Desconto (10%)                               -R$ 4,23
+└─          TOTAL DO COMBO                               R$ 38,07
+
+┌─ Combo 3 · Combo Tradicional
+│  Lanche:  McFish                                       R$ 22,90
+│  Bebida:  Refrigerante 700 ml                          R$ 10,50
+│  Batata:  Batata frita grande                          R$ 11,90
+│           Subtotal                                     R$ 45,30
+│           Desconto (10%)                               -R$ 4,53
+└─          TOTAL DO COMBO                               R$ 40,77
+
+┌─ Combo 4 · Combo Promocional "Terça do Big Mac"
+│  Lanche:  Big Mac                                      R$ 24,90
+│  Bebida:  Suco 700 ml                                  R$ 11,50
+│  Batata:  Batata frita grande                          R$ 11,90
+│           Subtotal                                     R$ 48,30
+│           Desconto (20%)                               -R$ 9,66
+└─          TOTAL DO COMBO                               R$ 38,64
+
+┌─ Combo 5 · Combo Promocional "Happy Hour"
+│  Lanche:  Quarteirão                                   R$ 26,90
+│  Bebida:  Refrigerante 300 ml                           R$ 6,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 43,30
+│           Desconto (15%)                               -R$ 6,50
+└─          TOTAL DO COMBO                               R$ 36,80
+
+════════════════════════════════════════════════════════════════════════
+ 2. PERSONALIZAÇÃO DE COMBOS EXISTENTES (Bridge)
+════════════════════════════════════════════════════════════════════════
+
+▶ Combo 1: trocar a bebida (Refrigerante 500 ml → Suco 700 ml)
+ANTES:
+┌─ Combo 1 · Combo Tradicional
+│  Lanche:  Big Mac                                      R$ 24,90
+│  Bebida:  Refrigerante 500 ml                           R$ 8,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 43,30
+│           Desconto (10%)                               -R$ 4,33
+└─          TOTAL DO COMBO                               R$ 38,97
+DEPOIS:
+┌─ Combo 1 · Combo Tradicional
+│  Lanche:  Big Mac                                      R$ 24,90
+│  Bebida:  Suco 700 ml                                  R$ 11,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 46,30
+│           Desconto (10%)                               -R$ 4,63
+└─          TOTAL DO COMBO                               R$ 41,67
+
+▶ Combo 2: trocar o tamanho da batata (pequena → grande)
+ANTES:
+┌─ Combo 2 · Combo Tradicional
+│  Lanche:  Quarteirão                                   R$ 26,90
+│  Bebida:  Suco 300 ml                                   R$ 7,50
+│  Batata:  Batata frita pequena                          R$ 7,90
+│           Subtotal                                     R$ 42,30
+│           Desconto (10%)                               -R$ 4,23
+└─          TOTAL DO COMBO                               R$ 38,07
+DEPOIS:
+┌─ Combo 2 · Combo Tradicional
+│  Lanche:  Quarteirão                                   R$ 26,90
+│  Bebida:  Suco 300 ml                                   R$ 7,50
+│  Batata:  Batata frita grande                          R$ 11,90
+│           Subtotal                                     R$ 46,30
+│           Desconto (10%)                               -R$ 4,63
+└─          TOTAL DO COMBO                               R$ 41,67
+
+▶ Combo 3: trocar bebida E batata de uma vez (encadeando métodos)
+ANTES:
+┌─ Combo 3 · Combo Tradicional
+│  Lanche:  McFish                                       R$ 22,90
+│  Bebida:  Refrigerante 700 ml                          R$ 10,50
+│  Batata:  Batata frita grande                          R$ 11,90
+│           Subtotal                                     R$ 45,30
+│           Desconto (10%)                               -R$ 4,53
+└─          TOTAL DO COMBO                               R$ 40,77
+DEPOIS:
+┌─ Combo 3 · Combo Tradicional
+│  Lanche:  McFish                                       R$ 22,90
+│  Bebida:  Suco 500 ml                                   R$ 9,50
+│  Batata:  Batata frita pequena                          R$ 7,90
+│           Subtotal                                     R$ 40,30
+│           Desconto (10%)                               -R$ 4,03
+└─          TOTAL DO COMBO                               R$ 36,27
+
+▶ Combo 4: trocar o tamanho da bebida mantendo o tipo (Suco 700 ml → Suco 300 ml)
+┌─ Combo 4 · Combo Promocional "Terça do Big Mac"
+│  Lanche:  Big Mac                                      R$ 24,90
+│  Bebida:  Suco 300 ml                                   R$ 7,50
+│  Batata:  Batata frita grande                          R$ 11,90
+│           Subtotal                                     R$ 44,30
+│           Desconto (20%)                               -R$ 8,86
+└─          TOTAL DO COMBO                               R$ 35,44
+
+════════════════════════════════════════════════════════════════════════
+ 3. INTEGRAÇÃO COM O SISTEMA LEGADO (Adapter)
+════════════════════════════════════════════════════════════════════════
+
+▶ O sistema legado só entende códigos e devolve texto no formato próprio:
+   consultarProduto(101) → "REFRIGERANTE;300;650"
+   consultarProduto(102) → "REFRIGERANTE;500;850"
+   consultarProduto(103) → "REFRIGERANTE;700;1050"
+   consultarProduto(201) → "SUCO;300;750"
+   consultarProduto(202) → "SUCO;500;950"
+   consultarProduto(203) → "SUCO;700;1150"
+
+▶ Convertendo cada código com o BebidaLegadaAdapter:
+   101 → Refrigerante 300 ml · R$ 6,50
+   102 → Refrigerante 500 ml · R$ 8,50
+   103 → Refrigerante 700 ml · R$ 10,50
+   201 → Suco 300 ml · R$ 7,50
+   202 → Suco 500 ml · R$ 9,50
+   203 → Suco 700 ml · R$ 11,50
+
+▶ Criando um NOVO combo com a bebida legada de código 202 (Suco 500 ml):
+┌─ Combo 6 · Combo Tradicional
+│  Lanche:  McFish                                       R$ 22,90
+│  Bebida:  Suco 500 ml [legado cód. 202]                 R$ 9,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 42,30
+│           Desconto (10%)                               -R$ 4,23
+└─          TOTAL DO COMBO                               R$ 38,07
+
+▶ Trocando a bebida do Combo 5 por uma bebida legada (código 103 — Refrigerante 700 ml):
+┌─ Combo 5 · Combo Promocional "Happy Hour"
+│  Lanche:  Quarteirão                                   R$ 26,90
+│  Bebida:  Refrigerante 700 ml [legado cód. 103]        R$ 10,50
+│  Batata:  Batata frita média                            R$ 9,90
+│           Subtotal                                     R$ 47,30
+│           Desconto (15%)                               -R$ 7,10
+└─          TOTAL DO COMBO                               R$ 40,20
+
+▶ Tratamento de erro: código legado inexistente (999)
+   ✖ ERRO LEGADO: CODIGO 999 NAO CADASTRADO
+
+▶ Tratamento de erro: tentar colocar uma batata no lugar da bebida
+   ✖ Combo 6: a bebida informada não é válida.
+
+════════════════════════════════════════════════════════════════════════
+ 4. RESUMO DO PEDIDO
+════════════════════════════════════════════════════════════════════════
+Combo 1    R$ 41,67  Big Mac + Suco 700 ml + Batata frita média
+Combo 2    R$ 41,67  Quarteirão + Suco 300 ml + Batata frita grande
+Combo 3    R$ 36,27  McFish + Suco 500 ml + Batata frita pequena
+Combo 4    R$ 35,44  Big Mac + Suco 300 ml + Batata frita grande
+Combo 5    R$ 40,20  Quarteirão + Refrigerante 700 ml [legado cód. 103] + Batata frita média
+Combo 6    R$ 38,07  McFish + Suco 500 ml [legado cód. 202] + Batata frita média
+────────────────────────────────────────────────────────────────────────
+TOTAL     R$ 233,32  (6 combos)
+
+✔ Demonstração concluída.
+
